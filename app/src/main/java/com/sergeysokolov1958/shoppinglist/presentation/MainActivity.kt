@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun isOnePaneMode(): Boolean {
         return shopItemContainer == null
     }
