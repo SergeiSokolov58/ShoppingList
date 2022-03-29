@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.sergeysokolov1958.shoppinglist.R
 import com.sergeysokolov1958.shoppinglist.domain.ShopItem
 
-class ShopItemActivity : AppCompatActivity() {
+class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListener {
 
 
     private var screenMode = MODE_UNKNOWN
@@ -31,6 +31,9 @@ class ShopItemActivity : AppCompatActivity() {
 
     }
 
+    override fun onEditingFinished() {
+        finish()
+    }
 
     private fun launchRightMode() {
         val fragment = when (screenMode) {
