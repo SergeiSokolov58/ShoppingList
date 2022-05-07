@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WhatsBuy</string>
+    <string name="error_input_count">כמות שגויה</string>
+    <string name="error_input_name">כותרת שגויה</string>
+    <string name="contentDescription">הוסף פריט חדש</string>
+    <string name="Field_name">שֵׁם:</string>
+    <string name="Field_count">כמות:</string>
+    <string name="Text_of_button_save">לשמור</string>
+    <string name="Toast_success">הצלחה</string>
+</resources>

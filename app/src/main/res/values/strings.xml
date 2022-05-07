@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">ShoppingList</string>
+    <string name="app_name">WhatsBuy</string>
     <string name="error_input_count">Invalid count</string>
     <string name="error_input_name">Invalid name</string>
+    <string name="contentDescription">Add new shop item</string>
+    <string name="Field_name">Name:</string>
+    <string name="Field_count">Count:</string>
+    <string name="Text_of_button_save">Save</string>
+    <string name="Toast_success">Success</string>
 </resources>
