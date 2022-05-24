@@ -8,11 +8,16 @@ import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sergeysokolov1958.shoppinglist.R
+import com.sergeysokolov1958.shoppinglist.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListener {
+
+    private lateinit var binding: ActivityMainBinding // For ad
 
     private lateinit var viewModel: MainViewModel
     private lateinit var shopListAdapter: ShopListAdapter
@@ -20,7 +25,19 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+
+        /////////////////////////////////////////////////////////
+        //MobileAds.initialize(this) {}
+        ////////////////////////////////////////////////////////
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initAdMob()
+        (application as AppMainState).showAdIfAvailable(this) {}
+        // For ad
+        ///////////////////////////////////////////////////////
+
         shopItemContainer = findViewById(R.id.shop_item_container)
 
         setupRecyclerView()
@@ -37,6 +54,27 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListen
                 launchFragment(ShopItemFragment.newInstanceAddItem())
             }
         }
+    }
+
+    private fun initAdMob() {
+        MobileAds.initialize(this)
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.adView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.adView.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.adView.destroy()
     }
 
     override fun onEditingFinished() {
