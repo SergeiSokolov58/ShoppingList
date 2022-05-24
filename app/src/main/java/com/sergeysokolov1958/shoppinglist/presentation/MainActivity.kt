@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListen
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initAdMob()
+        (application as AppMainState).showAdIfAvailable(this) {}
         // For ad
         ///////////////////////////////////////////////////////
 
